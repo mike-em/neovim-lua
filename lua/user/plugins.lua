@@ -101,7 +101,7 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- use "p00f/nvim-ts-rainbow"
 	-- use "nvim-treesitter/playground"
-	-- use "windwp/nvim-ts-autotag"
+	use("windwp/nvim-ts-autotag")
 	-- use "nvim-treesitter/nvim-treesitter-textobjects"
 	-- use "wellle/targets.vim"
 	-- use "RRethy/nvim-treesitter-textsubjects"
@@ -117,7 +117,7 @@ return packer.startup(function(use)
 
 	-- Fuzzy Finder/Telescope
 	use("nvim-telescope/telescope.nvim")
-	-- use "nvim-telescope/telescope-media-files.nvim"
+	-- use("nvim-telescope/telescope-media-files.nvim")
 	-- use "tom-anders/telescope-vim-bookmarks.nvim"
 
 	-- Note Taking
