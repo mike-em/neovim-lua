@@ -92,58 +92,58 @@ local mode_color = {
 	t = "#d05c65",
 }
 
-local left_pad = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
-}
+-- local left_pad = {
+-- 	function()
+-- 		return " "
+-- 	end,
+-- 	padding = 0,
+-- 	color = function()
+-- 		return { fg = gray }
+-- 	end,
+-- }
 
-local right_pad = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = dark_gray }
-	end,
-}
+-- local right_pad = {
+-- 	function()
+-- 		return " "
+-- 	end,
+-- 	padding = 0,
+-- 	color = function()
+-- 		return { fg = dark_gray }
+-- 	end,
+-- }
 
-local left_pad_alt = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
-}
+-- local left_pad_alt = {
+-- 	function()
+-- 		return " "
+-- 	end,
+-- 	padding = 0,
+-- 	color = function()
+-- 		return { fg = gray }
+-- 	end,
+-- }
 
-local right_pad_alt = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
-}
+-- local right_pad_alt = {
+-- 	function()
+-- 		return " "
+-- 	end,
+-- 	padding = 0,
+-- 	color = function()
+-- 		return { fg = gray }
+-- 	end,
+-- }
 
 local mode = {
 	-- mode component
 	function()
 		-- return "▊"
-		return " "
+		return ""
 		-- return "  "
 	end,
 	color = function()
 		-- auto change color according to neovims mode
 		return { fg = mode_color[vim.fn.mode()], bg = gray }
 	end,
-	padding = 0,
+	padding = 2,
 }
 
 local hide_in_width_60 = function()
@@ -169,7 +169,7 @@ local diagnostics = {
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,
-	padding = 0,
+	padding = 2,
 }
 
 local diff = {
@@ -199,7 +199,7 @@ local filetype = {
 		}
 
 		local return_val = function(str)
-			return hl_str(" ", "SLSep") .. hl_str(str, "SLFT") .. hl_str("", "SLSep")
+			return str
 		end
 
 		if str == "TelescopePrompt" then
@@ -227,8 +227,12 @@ local filetype = {
 			return return_val(str)
 		end
 	end,
+	color = function()
+		-- auto change color according to neovims mode
+		return { fg = green, bg = gray }
+	end,
 	icons_enabled = false,
-	padding = 0,
+	padding = 2,
 }
 
 local branch = {
@@ -237,7 +241,7 @@ local branch = {
 	icon = "%#SLGitIcon#" .. " " .. "%*" .. "%#SLBranchName#",
 	-- color = "Constant",
 	colored = false,
-	padding = 0,
+	padding = 2,
 	-- cond = hide_in_width_100,
 	fmt = function(str)
 		if str == "" or str == nil then
@@ -250,13 +254,15 @@ local branch = {
 
 local progress = {
 	"progress",
-	fmt = function(str)
+	fmt = function()
 		-- return "▊"
-		return hl_str("", "SLSep") .. hl_str("%P/%L", "SLProgress") .. hl_str(" ", "SLSep")
+		return "%P/%L"
 		-- return "  "
 	end,
-	-- color = "SLProgress",
-	padding = 0,
+	color = function()
+		return { fg = gray, bg = blue }
+	end,
+	padding = 2,
 }
 
 local current_signature = {
@@ -324,9 +330,13 @@ local spaces = {
 		end
 
 		-- TODO: update codicons and use their indent
-		return hl_str(" ", "SLSep") .. hl_str(" " .. shiftwidth .. space, "SLIndent") .. hl_str("", "SLSep")
+		-- return hl_str(" ", "SLSep") .. hl_str(" " .. shiftwidth .. space, "SLIndent") .. hl_str("", "SLSep")
+		return " " .. shiftwidth .. space
 	end,
-	padding = 0,
+	color = function()
+		return { fg = orange, bg = gray }
+	end,
+	padding = 2,
 	-- separator = "%#SLSeparator#" .. " │" .. "%*",
 	-- cond = hide_in_width_100,
 }
@@ -400,9 +410,7 @@ local lanuage_server = {
 		local language_servers = ""
 		local client_names_str_len = #client_names_str
 		if client_names_str_len ~= 0 then
-			language_servers = hl_str("", "SLSep")
-				.. hl_str(client_names_str, "SLSeparator")
-				.. hl_str("", "SLSep")
+			language_servers = hl_str(client_names_str, "SLSeparator")
 		end
 		if copilot_active then
 			language_servers = language_servers .. "%#SLCopilot#  %*"
@@ -415,19 +423,22 @@ local lanuage_server = {
 			return language_servers:gsub(", anonymous source", "")
 		end
 	end,
-	padding = 0,
+	padding = 2,
 	cond = hide_in_width,
 	-- separator = "%#SLSeparator#" .. " │" .. "%*",
 }
 
 local location = {
 	"location",
-	fmt = function(str)
+	fmt = function()
 		-- return "▊"
-		return hl_str(" ", "SLSep") .. hl_str(str, "SLLocation") .. hl_str(" ", "SLSep")
+		return "%l:%c"
 		-- return "  "
 	end,
-	padding = 0,
+	color = function()
+		return { fg = blue, bg = gray }
+	end,
+	padding = 2,
 }
 
 lualine.setup({
@@ -442,8 +453,8 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { left_pad, mode, branch, right_pad },
-		lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
+		lualine_a = { mode, branch },
+		lualine_b = { diagnostics },
 		-- lualine_c = {},
 		lualine_c = { current_signature },
 		-- lualine_x = { diff, spaces, "encoding", filetype },
