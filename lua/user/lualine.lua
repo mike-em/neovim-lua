@@ -5,7 +5,6 @@ if not status_ok then
 end
 
 local lualine_scheme = "tokyonight"
--- local lualine_scheme = "onedarker_alt"
 
 local status_theme_ok, theme = pcall(require, "lualine.themes." .. lualine_scheme)
 if not status_theme_ok then
@@ -133,11 +132,8 @@ local mode_color = {
 -- }
 
 local mode = {
-	-- mode component
 	function()
-		-- return "▊"
 		return ""
-		-- return "  "
 	end,
 	color = function()
 		-- auto change color according to neovims mode
@@ -228,7 +224,6 @@ local filetype = {
 		end
 	end,
 	color = function()
-		-- auto change color according to neovims mode
 		return { fg = green, bg = gray }
 	end,
 	icons_enabled = false,
@@ -239,10 +234,8 @@ local branch = {
 	"branch",
 	icons_enabled = true,
 	icon = "%#SLGitIcon#" .. " " .. "%*" .. "%#SLBranchName#",
-	-- color = "Constant",
 	colored = false,
 	padding = 2,
-	-- cond = hide_in_width_100,
 	fmt = function(str)
 		if str == "" or str == nil then
 			return "..."
@@ -255,9 +248,7 @@ local branch = {
 local progress = {
 	"progress",
 	fmt = function()
-		-- return "▊"
 		return "%P/%L"
-		-- return "  "
 	end,
 	color = function()
 		return { fg = gray, bg = blue }
@@ -290,17 +281,6 @@ local current_signature = {
 	padding = 0,
 }
 
--- cool function for progress
--- local progress = function()
---   local current_line = vim.fn.line "."
---   local total_lines = vim.fn.line "$"
---   local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
---   local line_ratio = current_line / total_lines
---   local index = math.ceil(line_ratio * #chars)
---   -- return chars[index]
---   return "%#SLProgress#" .. chars[index] .. "%*"
--- end
-
 local spaces = {
 	function()
 		local buf_ft = vim.bo.filetype
@@ -330,15 +310,12 @@ local spaces = {
 		end
 
 		-- TODO: update codicons and use their indent
-		-- return hl_str(" ", "SLSep") .. hl_str(" " .. shiftwidth .. space, "SLIndent") .. hl_str("", "SLSep")
 		return " " .. shiftwidth .. space
 	end,
 	color = function()
 		return { fg = orange, bg = gray }
 	end,
 	padding = 2,
-	-- separator = "%#SLSeparator#" .. " │" .. "%*",
-	-- cond = hide_in_width_100,
 }
 
 local lanuage_server = {
@@ -425,15 +402,12 @@ local lanuage_server = {
 	end,
 	padding = 2,
 	cond = hide_in_width,
-	-- separator = "%#SLSeparator#" .. " │" .. "%*",
 }
 
 local location = {
 	"location",
 	fmt = function()
-		-- return "▊"
 		return "%l:%c"
-		-- return "  "
 	end,
 	color = function()
 		return { fg = blue, bg = gray }
