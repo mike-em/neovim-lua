@@ -93,6 +93,10 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		require("lsp-inlayhints").on_attach(bufnr, client)
 	end
+
+	if client.name == "jdt.ls" then
+		vim.lsp.codelens.refresh()
+	end
 end
 
 function M.enable_format_on_save()
