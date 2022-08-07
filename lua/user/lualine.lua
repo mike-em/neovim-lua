@@ -72,8 +72,6 @@ local mode_color = {
 	v = "#b668cd",
 	[""] = "#b668cd",
 	V = "#b668cd",
-	-- c = '#B5CEA8',
-	-- c = '#D7BA7D',
 	c = "#46a6b2",
 	no = "#D16D9E",
 	s = "#88b369",
@@ -90,46 +88,6 @@ local mode_color = {
 	["!"] = "#46a6b2",
 	t = "#d05c65",
 }
-
--- local left_pad = {
--- 	function()
--- 		return " "
--- 	end,
--- 	padding = 0,
--- 	color = function()
--- 		return { fg = gray }
--- 	end,
--- }
-
--- local right_pad = {
--- 	function()
--- 		return " "
--- 	end,
--- 	padding = 0,
--- 	color = function()
--- 		return { fg = dark_gray }
--- 	end,
--- }
-
--- local left_pad_alt = {
--- 	function()
--- 		return " "
--- 	end,
--- 	padding = 0,
--- 	color = function()
--- 		return { fg = gray }
--- 	end,
--- }
-
--- local right_pad_alt = {
--- 	function()
--- 		return " "
--- 	end,
--- 	padding = 0,
--- 	color = function()
--- 		return { fg = gray }
--- 	end,
--- }
 
 local mode = {
 	function()
@@ -270,8 +228,6 @@ local current_signature = {
 		local hint = sig.hint
 
 		if not require("user.functions").isempty(hint) then
-			-- return "%#SLSeparator#│ : " .. hint .. "%*"
-			-- return "%#SLSeparator#│ " .. hint .. "%*"
 			return "%#SLSeparator# " .. hint .. "%*"
 		end
 
@@ -309,7 +265,6 @@ local spaces = {
 			return ""
 		end
 
-		-- TODO: update codicons and use their indent
 		return " " .. shiftwidth .. space
 	end,
 	color = function()
@@ -429,11 +384,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode, branch },
 		lualine_b = { diagnostics },
-		-- lualine_c = {},
 		lualine_c = { current_signature },
-		-- lualine_x = { diff, spaces, "encoding", filetype },
-		-- lualine_x = { diff, lanuage_server, spaces, filetype },
-		-- lualine_x = { lanuage_server, spaces, filetype },
 		lualine_x = { lanuage_server, spaces, filetype },
 		lualine_y = {},
 		lualine_z = { location, progress },
