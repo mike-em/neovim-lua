@@ -44,7 +44,7 @@ keymap("n", "<leader>=", ":split<CR>", opts)
 
 -- Closing
 keymap("n", "<leader>q", ":qa<CR>", opts)
-keymap("n", "<leader>r", ":q<CR>", opts)
+keymap("n", "<leader>t", ":q<CR>", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- Highlights
