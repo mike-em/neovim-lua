@@ -62,7 +62,7 @@ return packer.startup(function(use)
 	use({ "ray-x/lsp_signature.nvim", commit = "4665921ff8e30601c7c1328625b3abc1427a6143" })
 	use({ "SmiteshP/nvim-navic", commit = "94bf6fcb1dc27bdad230d9385da085e72c390019" })
 	use({ "RRethy/vim-illuminate", commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be" })
-	use({ "lvimuser/lsp-inlayhints.nvim", commit = "5e6931c0fdced82c83a5f846ff208225d255ca94" })
+	use({ "lvimuser/lsp-inlayhints.nvim", commit = "d9a84a7afc3a98065a9245ec5f797eeffef507e7" })
 	use({ "simrat39/inlay-hints.nvim", commit = "7ec15ee9ff270265f59cd99d2ccbcd1ad2aa90d8" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", commit = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea" })
 
