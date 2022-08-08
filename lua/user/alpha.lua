@@ -28,7 +28,7 @@ dashboard.section.buttons.val = {
 	button("q", " Quit", ":qa<CR>"),
 }
 local function footer()
-	return "mikem.io"
+	return "wejo.com"
 end
 
 dashboard.section.footer.val = footer()
