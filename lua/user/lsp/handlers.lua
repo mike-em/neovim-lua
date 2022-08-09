@@ -91,7 +91,16 @@ M.on_attach = function(client, bufnr)
 	attach_navic(client, bufnr)
 
 	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
 		require("lsp-inlayhints").on_attach(bufnr, client)
+	end
+
+	if client.name == "sumneko_lua" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
+	if client.name == "jsonls" then
+		client.resolved_capabilities.document_formatting = false
 	end
 
 	if client.name == "jdt.ls" then
@@ -99,35 +108,12 @@ M.on_attach = function(client, bufnr)
 	end
 end
 
-function M.enable_format_on_save()
-	vim.cmd([[
-    augroup format_on_save
-      autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.formatting_sync() 
-    augroup end
-  ]])
-	vim.notify("Enabled format on save")
-end
+vim.cmd([[
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
+augroup END
+]])
 
-function M.disable_format_on_save()
-	M.remove_augroup("format_on_save")
-	vim.notify("Disabled format on save")
-end
-
-function M.toggle_format_on_save()
-	if vim.fn.exists("#format_on_save#BufWritePre") == 0 then
-		M.enable_format_on_save()
-	else
-		M.disable_format_on_save()
-	end
-end
-
-function M.remove_augroup(name)
-	if vim.fn.exists("#" .. name) == 1 then
-		vim.cmd("au! " .. name)
-	end
-end
-
-vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_seq_sync()]])
+vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
 return M
