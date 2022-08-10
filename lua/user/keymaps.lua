@@ -58,6 +58,7 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>gg", ":Git<CR>", opts)
 keymap("n", "<leader>gd", ":Gdiffsplit<CR>", opts)
 keymap("n", "<leader>gt", ":Git difftool<CR>", opts)
+keymap("n", "<leader>gb", ":Git blame<CR>", opts)
 
 -- Alpha
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
