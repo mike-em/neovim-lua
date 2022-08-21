@@ -126,6 +126,10 @@ return packer.startup(function(use)
 	-- Project
 	use({ "ahmedkhalf/project.nvim", commit = "090bb11ee7eb76ebb9d0be1c6060eac4f69a240f" })
 
+	-- Rust
+	use({ "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" })
+	use("Saecki/crates.nvim")
+
 	-- Git
 	use({ "lewis6991/gitsigns.nvim", commit = "9c3ca027661136a618c82275427746e481c84a4e" })
 	use({ "tpope/vim-fugitive", commit = "66a921bbe38bea19f6b581c8a56d5a8a41209e35" })
