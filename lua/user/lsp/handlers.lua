@@ -99,6 +99,10 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	if client.name == "jsonls" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	if client.name == "html" then
 		client.resolved_capabilities.document_formatting = false
 	end
