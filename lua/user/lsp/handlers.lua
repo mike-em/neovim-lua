@@ -103,16 +103,14 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	if client.name == "html" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	if client.name == "jdt.ls" then
 		vim.lsp.codelens.refresh()
 	end
 end
-
-vim.cmd([[
-augroup JsonToJsonc
-    autocmd! FileType json set filetype=jsonc
-augroup END
-]])
 
 vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
