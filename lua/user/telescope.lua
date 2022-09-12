@@ -5,9 +5,25 @@ end
 
 local actions = require("telescope.actions")
 
+local default_mappings = {
+	i = {
+		["<Tab>"] = actions.move_selection_next,
+		["<S-Tab>"] = actions.move_selection_previous,
+		["<C-c>"] = actions.close,
+		["<CR>"] = actions.select_default,
+		["<C-d>"] = require("telescope.actions").delete_buffer,
+	},
+
+	n = {
+		["<esc>"] = actions.close,
+		["<CR>"] = actions.select_default,
+		["<Tab>"] = actions.move_selection_next,
+		["<S-Tab>"] = actions.move_selection_previous,
+	},
+}
+
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -68,8 +84,8 @@ telescope.setup({
 
 		mappings = {
 			i = {
-				["<Tab>"] = actions.move_selection_next,
-				["<S-Tab>"] = actions.move_selection_previous,
+				["<S-Tab>"] = actions.move_selection_next,
+				["<Tab>"] = actions.move_selection_previous,
 				["<C-c>"] = actions.close,
 				["<CR>"] = actions.select_default,
 				["<C-d>"] = require("telescope.actions").delete_buffer,
@@ -86,15 +102,17 @@ telescope.setup({
 	pickers = {
 		live_grep = {
 			theme = "ivy",
+			mappings = default_mappings,
 		},
 		find_files = {
 			theme = "dropdown",
 			previewer = false,
+			mappings = default_mappings,
 		},
 		buffers = {
 			theme = "dropdown",
 			previewer = false,
-			initial_mode = "normal",
+			mappings = default_mappings,
 		},
 		planets = {
 			show_pluto = true,
