@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/michalmikucki/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["crates.nvim"] = {
+    loaded = true,
+    path = "/Users/michalmikucki/.local/share/nvim/site/pack/packer/start/crates.nvim",
+    url = "https://github.com/Saecki/crates.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/michalmikucki/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -273,6 +278,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/michalmikucki/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/michalmikucki/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/christianchiarulli/rust-tools.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
