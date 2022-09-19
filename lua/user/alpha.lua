@@ -23,7 +23,7 @@ dashboard.section.buttons.val = {
 	button("f", " Find file", ":Telescope find_files <CR>"),
 	button("t", " Find text", ":Telescope live_grep <CR>"),
 	button("r", " Recent files", ":Telescope oldfiles <CR>"),
-	button("e", " New file", ":ene <BAR> startinsert <CR>"),
+	button("e", " Open Nerd Tree", ":NvimTreeOpen <CR>"),
 	button("c", " Config", ":e ~/.config/nvim/init.lua <CR>"),
 	button("q", " Quit", ":qa<CR>"),
 }
