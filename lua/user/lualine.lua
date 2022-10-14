@@ -60,6 +60,7 @@ vim.api.nvim_set_hl(0, "SLFG", { fg = "#abb2bf", bg = sl_hl.background })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = sl_hl.background, italic = true })
 vim.api.nvim_set_hl(0, "SLError", { fg = "#bf616a", bg = sl_hl.background })
 vim.api.nvim_set_hl(0, "SLWarning", { fg = "#D7BA7D", bg = sl_hl.background })
+vim.api.nvim_set_hl(0, "SLHint", { fg = cyan, bg = sl_hl.background })
 vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = sl_hl.background })
 
 local hl_str = function(str, hl)
@@ -115,10 +116,11 @@ end
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
-	sections = { "error", "warn" },
+	sections = { "error", "warn", "hint" },
 	symbols = {
 		error = "%#SLError#  %*",
 		warn = "%#SLWarning#  %*",
+		hint = "%#SLHint#  %*",
 	},
 	colored = false,
 	update_in_insert = false,
