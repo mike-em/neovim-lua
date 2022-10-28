@@ -60,6 +60,11 @@ keymap("n", "<leader>gd", ":Gdiffsplit<CR>", opts)
 keymap("n", "<leader>gt", ":Git difftool<CR>", opts)
 keymap("n", "<leader>gb", ":Git blame<CR>", opts)
 
+-- Git conflicts
+keymap("n", "<leader>gdd", ":Gdiffsplit!<CR>", opts)
+keymap("n", "<leader>gss", ":diffget /2<CR>", opts)
+keymap("n", "<leader>gll", ":diffget /3<CR>", opts)
+
 -- Alpha
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 
