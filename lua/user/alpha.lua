@@ -38,6 +38,7 @@ dashboard.section.header.val = {
 -- 	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
 -- 	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 -- }
+
 dashboard.section.buttons.val = {
 	button("f", " Find file", ":Telescope find_files <CR>"),
 	button("t", " Find text", ":Telescope live_grep <CR>"),
@@ -47,7 +48,7 @@ dashboard.section.buttons.val = {
 	button("q", " Quit", ":qa<CR>"),
 }
 local function footer()
-	return "wejo.com"
+	return "mikem.io"
 end
 
 dashboard.section.footer.val = footer()
