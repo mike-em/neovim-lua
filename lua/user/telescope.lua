@@ -107,6 +107,7 @@ telescope.setup({
 		find_files = {
 			theme = "dropdown",
 			previewer = false,
+			hidden = true,
 			mappings = default_mappings,
 		},
 		buffers = {
