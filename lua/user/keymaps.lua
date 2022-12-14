@@ -65,6 +65,9 @@ keymap("n", "<leader>gdd", ":Gdiffsplit!<CR>", opts)
 keymap("n", "<leader>gss", ":diffget /2<CR>", opts)
 keymap("n", "<leader>gll", ":diffget /3<CR>", opts)
 
+-- UndoTree
+keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
+
 -- Alpha
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 
