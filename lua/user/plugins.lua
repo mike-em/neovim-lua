@@ -90,7 +90,6 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
-
 	-- Utility
 	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
 	use({ "lewis6991/impatient.nvim", commit = "4ccbe749ce439fa25d387d459e8c339131cc5d1f" })
