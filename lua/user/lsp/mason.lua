@@ -30,7 +30,8 @@ local servers = {
   "zk@v0.10.1",
   "lemminx",
   "gopls",
-  "dartls"
+  "dartls",
+  "tailwindcss"
 }
 
 local settings = {
