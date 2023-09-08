@@ -16,8 +16,7 @@ local servers = {
   "jdtls",
   "jsonls",
   "solc",
-  "solidity_ls",
-  "sumneko_lua",
+  "lua_ls",
   "tflint",
   "terraformls",
   "tsserver",
@@ -30,7 +29,6 @@ local servers = {
   "zk@v0.10.1",
   "lemminx",
   "gopls",
-  "dartls"
 }
 
 local settings = {
@@ -72,20 +70,20 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end
 
-  if server == "sumneko_lua" then
-    local l_status_ok, lua_dev = pcall(require, "lua-dev")
-    if not l_status_ok then
-      return
-    end
-    local luadev = lua_dev.setup {
-      lspconfig = {
-        on_attach = opts.on_attach,
-        capabilities = opts.capabilities,
-      },
-    }
-    lspconfig.sumneko_lua.setup(luadev)
-    goto continue
-  end
+  --[[ if server == "lua_ls" then ]]
+  --[[   local l_status_ok, neodev = pcall(require, "neodev") ]]
+  --[[   if not l_status_ok then ]]
+  --[[     return ]]
+  --[[   end ]]
+  --[[   local n_dev = neodev.setup { ]]
+  --[[     lspconfig = { ]]
+  --[[       on_attach = opts.on_attach, ]]
+  --[[       capabilities = opts.capabilities, ]]
+  --[[     }, ]]
+  --[[   } ]]
+  --[[   lspconfig.lua_ls.setup(n_dev) ]]
+  --[[   goto continue ]]
+  --[[ end ]]
 
   if server == "tsserver" then
     local tsserver_opts = require "user.lsp.settings.tsserver"
