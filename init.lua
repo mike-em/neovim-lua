@@ -12,11 +12,10 @@ require("user.impatient")
 require("user.indentline")
 require("user.bufferline")
 require("user.lualine")
-require("user.alpha")
+--[[ require("user.alpha") ]]
 require("user.lsp")
 require("user.inlay-hints")
 require("user.lsp-inlayhints")
 require("user.gitsigns")
-require("user.treesitter-context")
+--[[ require("user.treesitter-context") ]]
 require("user.nvim-web-icons")
--- require("user.dap")

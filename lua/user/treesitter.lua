@@ -1,15 +1,15 @@
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all" or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
+  ensure_installed = "all",                         -- one of "all" or a list of languages
+  sync_install = false,                             -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "ocamllex", "wing", "phpdoc" }, -- List of parsers to ignore installing
   matchup = {
-    enable = true, -- mandatory, false will disable the whole extension
+    enable = true,                                  -- mandatory, false will disable the whole extension
     disable_virtual_text = true,
-    disable = { "html" }, -- optional, list of language that will be disabled
+    disable = { "html" },                           -- optional, list of language that will be disabled
     -- include_match_words = false
   },
   highlight = {
-    enable = true, -- false will disable the whole extension
+    enable = true,            -- false will disable the whole extension
     disable = { "markdown" }, -- list of language that will be disabled
   },
   autopairs = {
