@@ -1,113 +1,121 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-	return
+-- set termguicolors to enable highlight groups
+--[[ vim.g.loaded_netrw = 1 ]]
+--[[ vim.g.loaded_netrwPlugin = 1 ]]
+--[[ vim.opt.termguicolors = true ]]
+
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'l', api.node.open.edit, opts('o'))
+  vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('c'))
+  vim.keymap.set('n', 'v', api.node.open.vertical, opts('v'))
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-	return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup({
-	hijack_directories = {
-		enable = false,
-	},
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
-	filters = {
-		-- custom = { ".git" },
-		dotfiles = true,
-		exclude = { "node_modules" },
-	},
-	update_cwd = true,
-	renderer = {
-		add_trailing = false,
-		group_empty = false,
-		highlight_git = false,
-		highlight_opened_files = "none",
-		root_folder_modifier = ":t",
-		indent_markers = {
-			enable = false,
-			icons = {
-				corner = "└ ",
-				edge = "│ ",
-				none = "  ",
-			},
-		},
-		icons = {
-			webdev_colors = true,
-			git_placement = "before",
-			padding = " ",
-			symlink_arrow = " ➛ ",
-			show = {
-				file = true,
-				folder = true,
-				folder_arrow = true,
-				git = true,
-			},
-			glyphs = {
-				default = "",
-				symlink = "",
-				folder = {
-					arrow_open = "",
-					arrow_closed = "",
-					default = "",
-					open = "",
-					empty = "",
-					empty_open = "",
-					symlink = "",
-					symlink_open = "",
-				},
-				git = {
-					unstaged = "",
-					staged = "S",
-					unmerged = "",
-					renamed = "➜",
-					untracked = "U",
-					deleted = "",
-					ignored = "◌",
-				},
-			},
-		},
-	},
-	diagnostics = {
-		enable = true,
-		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
-		},
-	},
-	update_focused_file = {
-		enable = true,
-		update_cwd = true,
-		ignore_list = {},
-	},
-	git = {
-		enable = true,
-		ignore = true,
-		timeout = 500,
-	},
-	view = {
-		width = 30,
-		height = 30,
-		hide_root_folder = false,
-		side = "left",
-		mappings = {
-			custom_only = false,
-			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
-			},
-		},
-		number = false,
-		relativenumber = false,
-	},
-})
+-- pass to setup along with your other options
+require("nvim-tree").setup {
+  ---
+  on_attach = my_on_attach,
+  ---
+  hijack_directories = {
+    enable = false,
+  },
+  filters = {
+    dotfiles = true,
+    exclude = { "node_modules" },
+  },
+  update_cwd = true,
+  renderer = {
+    add_trailing = false,
+    group_empty = false,
+    highlight_git = false,
+    highlight_opened_files = "none",
+    root_folder_modifier = ":t",
+    indent_markers = {
+      enable = false,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        none = "  ",
+      },
+    },
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "U",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    ignore_list = {},
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  view = {
+    width = 30,
+    hide_root_folder = false,
+    side = "left",
+    --[[ mappings = { ]]
+    --[[   custom_only = false, ]]
+    --[[   list = { ]]
+    --[[     { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") }, ]]
+    --[[     { key = "h", cb = tree_cb("close_node") }, ]]
+    --[[     { key = "v", cb = tree_cb("vsplit") }, ]]
+    --[[   }, ]]
+    --[[ }, ]]
+    number = false,
+    relativenumber = false,
+  },
+}

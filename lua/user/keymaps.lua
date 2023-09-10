@@ -53,6 +53,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", ":Git<CR>", opts)
@@ -72,12 +73,16 @@ keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
+keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 
 -- Find and replace --
 keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Swap windows horizontal --
+keymap("n", "H", "<C-w>H")
+keymap("n", "L", "<C-w>L")
 
 -- Insert --
 -- Press jk fast to enter
