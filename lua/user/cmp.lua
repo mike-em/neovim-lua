@@ -132,7 +132,7 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "crates", group_index = 1 },
+    { name = "crates",         group_index = 1 },
     {
       name = "copilot",
       -- keyword_length = 1,
@@ -153,12 +153,12 @@ cmp.setup({
       end,
       group_index = 2,
     },
-    { name = "nvim_lua", group_index = 2 },
-    { name = "luasnip", group_index = 2 },
-    { name = "buffer", group_index = 2 },
-    { name = "cmp_tabnine", group_index = 2 },
-    { name = "path", group_index = 2 },
-    { name = "emoji", group_index = 2 },
+    { name = "nvim_lua",       group_index = 2 },
+    { name = "luasnip",        group_index = 2 },
+    { name = "buffer",         group_index = 2 },
+    { name = "cmp_tabnine",    group_index = 2 },
+    { name = "path",           group_index = 2 },
+    { name = "emoji",          group_index = 2 },
     { name = "lab.quick_data", keyword_length = 4, group_index = 2 },
   },
   sorting = {

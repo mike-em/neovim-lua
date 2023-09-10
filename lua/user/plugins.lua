@@ -61,8 +61,8 @@ return packer.startup(function(use)
   use "SmiteshP/nvim-navic"
   use "RRethy/vim-illuminate"
   use "lvimuser/lsp-inlayhints.nvim"
-  use "simrat39/inlay-hints.nvim"
-  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  --[[ use "simrat39/inlay-hints.nvim" ]]
+  --[[ use "https://git.sr.ht/~whynothugo/lsp_lines.nvim" ]]
 
   -- Completion
   use "christianchiarulli/nvim-cmp"
@@ -87,10 +87,11 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Utility
   use "moll/vim-bbye"
-  use "lewis6991/impatient.nvim"
+  --[[ use "lewis6991/impatient.nvim" ]]
 
   -- Icon
   use "kyazdani42/nvim-web-devicons"
@@ -102,10 +103,10 @@ return packer.startup(function(use)
   use "christianchiarulli/lualine.nvim"
 
   -- Startup
-  use "goolord/alpha-nvim"
+  --[[ use "goolord/alpha-nvim" ]]
 
   -- Indent
-  use "lukas-reineke/indent-blankline.nvim"
+  --[[ use "lukas-reineke/indent-blankline.nvim" ]]
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"
