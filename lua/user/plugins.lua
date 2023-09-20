@@ -53,6 +53,9 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim"
   use "folke/neodev.nvim"
 
+  -- Harpoon
+  use "ThePrimeagen/harpoon"
+
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"

@@ -16,6 +16,7 @@ require("user.lsp-inlayhints")
 require("user.gitsigns")
 require("user.treesitter-context")
 require("user.nvim-web-icons")
+require("user.harpoon")
 --[[ require("user.tokyonight") ]]
 --[[ require("user.impatient") ]]
 --[[ require("user.indentline") ]]

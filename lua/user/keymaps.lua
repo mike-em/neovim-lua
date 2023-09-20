@@ -47,7 +47,8 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>n", ":noh<CR>", opts)
 
 -- NerdTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+--[[ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts) ]]
+keymap("n", "<leader>e", ":Explore<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -70,7 +71,7 @@ keymap("n", "<leader>gll", ":diffget /3<CR>", opts)
 keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
 
 -- Alpha
-keymap("n", "<leader>a", ":Alpha<CR>", opts)
+--[[ keymap("n", "<leader>a", ":Alpha<CR>", opts) ]]
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
