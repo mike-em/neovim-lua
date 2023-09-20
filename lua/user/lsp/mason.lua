@@ -9,6 +9,7 @@ if not status_ok_1 then
 end
 
 local servers = {
+  "tailwindcss",
   "cssls",
   "cssmodules_ls",
   "emmet_ls",
