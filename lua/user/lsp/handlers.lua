@@ -110,6 +110,10 @@ M.on_attach = function(client, bufnr)
   if client.name == "jdt.ls" then
     vim.lsp.codelens.refresh()
   end
+
+  if client.name == "bashls" then
+    vim.diagnostic.disable(bufnr)
+  end
 end
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {

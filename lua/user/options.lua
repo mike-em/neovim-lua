@@ -40,6 +40,8 @@ local options = {
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   title = true,
   breakindent = true,
+  foldmethod = 'indent',
+  foldenable = false,
   -- colorcolumn = "80",
   -- colorcolumn = "120",
 
