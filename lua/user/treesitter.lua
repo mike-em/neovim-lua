@@ -16,7 +16,7 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
   },
   indent = { enable = true, disable = { "python", "css", "rust" } },
-  context_commentstring = {
+  ts_context_commentstring = {
     enable = true,
     enable_autocmd = false,
   },
@@ -24,6 +24,8 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
     disable = { "xml", "markdown" },
   },
+  modules = {},
+  auto_install = true,
   playground = {
     enable = true,
   },
