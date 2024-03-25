@@ -117,7 +117,7 @@ M.on_attach = function(client, bufnr)
 end
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*' },
+  pattern = { '*.ts', '*.js', '*.tsx', '*.jsx', '*.json', '*.lua' },
   callback = function()
     vim.lsp.buf.format({ async = false })
   end,
