@@ -64,11 +64,12 @@ return packer.startup(function(use)
   use "SmiteshP/nvim-navic"
   use "RRethy/vim-illuminate"
   use "lvimuser/lsp-inlayhints.nvim"
+  use "ziglang/zig.vim"
   --[[ use "simrat39/inlay-hints.nvim" ]]
   --[[ use "https://git.sr.ht/~whynothugo/lsp_lines.nvim" ]]
 
   -- Completion
-  use "christianchiarulli/nvim-cmp"
+  use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
   use "saadparwaiz1/cmp_luasnip"
@@ -90,10 +91,14 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
+  use "EdenEast/nightfox.nvim"
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "rose-pine/neovim", as = "rose-pine" }
 
   -- Utility
   use "moll/vim-bbye"
+  use "mhartington/formatter.nvim"
+  --[[ use "MunifTanjim/prettier.nvim" ]]
   --[[ use "lewis6991/impatient.nvim" ]]
 
   -- Icon
@@ -122,6 +127,8 @@ return packer.startup(function(use)
 
   -- Project
   use "ahmedkhalf/project.nvim"
+
+  -- Svelte
 
   -- Rust
   -- use({ "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" })

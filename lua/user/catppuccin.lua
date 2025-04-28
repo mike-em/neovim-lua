@@ -21,7 +21,7 @@ require("catppuccin").setup({
     loops = {},
     functions = {},
     keywords = {},
-    strings = {},
+    strings = { "italic" },
     variables = {},
     numbers = {},
     booleans = {},

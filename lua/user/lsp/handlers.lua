@@ -13,7 +13,7 @@ M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignHint", text = "󰌵" },
     { name = "DiagnosticSignInfo", text = "" },
   }
 
@@ -24,7 +24,6 @@ M.setup = function()
   local config = {
     -- disable virtual text
     virtual_lines = false,
-    -- virtual_text = false,
 
     -- show signs
     signs = {
@@ -79,7 +78,7 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = false })' ]])
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
@@ -95,32 +94,38 @@ M.on_attach = function(client, bufnr)
     require("lsp-inlayhints").on_attach(bufnr, client)
   end
 
-  if client.name == "lua_ls" then
-    client.resolved_capabilities.document_formatting = false
-  end
-
-  if client.name == "jsonls" then
-    client.resolved_capabilities.document_formatting = false
-  end
-
-  if client.name == "html" then
+  if client.name == "zig" then
     client.resolved_capabilities.document_formatting = false
   end
 
   if client.name == "jdt.ls" then
     vim.lsp.codelens.refresh()
   end
-
-  if client.name == "bashls" then
-    vim.diagnostic.disable(bufnr)
-  end
 end
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.svelte", "*.css", "*.scss" },
+  callback = function()
+    vim.cmd("FormatWrite")
+  end
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.json" },
+  callback = function()
+    vim.cmd("Format")
+  end
+})
+
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.ts', '*.js', '*.tsx', '*.jsx', '*.json', '*.lua' },
+  pattern = { '*.lua', '*.go', '*.zig' },
   callback = function()
     vim.lsp.buf.format({ async = false })
   end,
 })
+
+vim.api.nvim_set_keymap('n', '<leader>f',
+  [[<cmd>lua vim.fn.system('npx eslint --fix "' .. vim.fn.expand('%:p') .. '"') vim.cmd('edit')<CR>]],
+  { noremap = true, silent = true })
 
 return M

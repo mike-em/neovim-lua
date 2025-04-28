@@ -4,7 +4,10 @@ if not status_ok then
   return
 end
 
-local lualine_scheme = "catppuccin"
+--[[ local lualine_scheme = "catppuccin" ]]
+local lualine_scheme = "rose-pine"
+--[[ local lualine_scheme = "terafox" ]]
+--[[ local lualine_scheme = "tokyonight" ]]
 
 local status_theme_ok, theme = pcall(require, "lualine.themes." .. lualine_scheme)
 if not status_theme_ok then
@@ -23,13 +26,13 @@ end
 
 local gray = "#32363e"
 local dark_gray = "#282C34"
-local red = "#D16969"
+--[[ local red = "#D16969" ]]
 local blue = "#569CD6"
 local green = "#6A9955"
 local cyan = "#4EC9B0"
 local orange = "#CE9178"
-local yellow = "#DCDCAA"
-local yellow_orange = "#D7BA7D"
+--[[ local yellow = "#DCDCAA" ]]
+--[[ local yellow_orange = "#D7BA7D" ]]
 local purple = "#C586C0"
 
 if lualine_scheme == "darkplus_dark" then
@@ -120,7 +123,7 @@ local diagnostics = {
   symbols = {
     error = "%#SLError#  %*",
     warn = "%#SLWarning#  %*",
-    hint = "%#SLHint#  %*",
+    hint = "%#SLHint# 󰌵 %*",
   },
   colored = false,
   update_in_insert = false,
@@ -267,7 +270,7 @@ local spaces = {
       return ""
     end
 
-    return " " .. shiftwidth .. space
+    return "󰌒 " .. shiftwidth .. space
   end,
   color = function()
     return { fg = orange, bg = gray }
@@ -316,26 +319,6 @@ local lanuage_server = {
         copilot_active = true
       end
     end
-
-    -- add formatter
-    --[[ local s = require("null-ls.sources") ]]
-    --[[ local available_sources = s.get_available(buf_ft) ]]
-    --[[ local registered = {} ]]
-    --[[ for _, source in ipairs(available_sources) do ]]
-    --[[ 	for method in pairs(source.methods) do ]]
-    --[[ 		registered[method] = registered[method] or {} ]]
-    --[[ 		table.insert(registered[method], source.name) ]]
-    --[[ 	end ]]
-    --[[ end ]]
-    --[[]]
-    --[[ local formatter = registered["NULL_LS_FORMATTING"] ]]
-    --[[ local linter = registered["NULL_LS_DIAGNOSTICS"] ]]
-    --[[ if formatter ~= nil then ]]
-    --[[ 	vim.list_extend(client_names, formatter) ]]
-    --[[ end ]]
-    --[[ if linter ~= nil then ]]
-    --[[ 	vim.list_extend(client_names, linter) ]]
-    --[[ end ]]
 
     -- join client names with commas
     local client_names_str = table.concat(client_names, ", ")

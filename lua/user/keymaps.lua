@@ -23,6 +23,8 @@ keymap("n", "<leader>j", "<C-w>j", opts)
 keymap("n", "<leader>k", "<C-w>k", opts)
 keymap("n", "<leader>l", "<C-w>l", opts)
 
+keymap("n", "<C-i>", "<C-i>Tab", opts)
+
 -- Tabs --
 keymap("n", "<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 keymap("n", "<leader>ra", ":%bd|e#|bd#<cr>", opts)
@@ -47,7 +49,6 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>n", ":noh<CR>", opts)
 
 -- NerdTree
---[[ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts) ]]
 keymap("n", "<leader>e", ":Explore<CR>", opts)
 
 -- Telescope
@@ -68,11 +69,11 @@ keymap("n", "<leader>gdd", ":Gdiffsplit!<CR>", opts)
 keymap("n", "<leader>gss", ":diffget /2<CR>", opts)
 keymap("n", "<leader>gll", ":diffget /3<CR>", opts)
 
+-- quickfix lists
+keymap("n", "<leader>d", ":lua vim.diagnostic.setqflist()<CR>", opts)
+
 -- UndoTree
 keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
-
--- Alpha
---[[ keymap("n", "<leader>a", ":Alpha<CR>", opts) ]]
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)

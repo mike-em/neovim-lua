@@ -52,7 +52,7 @@ telescope.setup({
       ".vscode/",
       "__pycache__/",
       "build/",
-      "env/",
+      "%.env/",
       "gradle/",
       "node_modules/",
       "%.pdb",

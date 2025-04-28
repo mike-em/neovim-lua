@@ -16,31 +16,31 @@ local check_backspace = function()
 end
 
 local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
+  Text = "󰉿",
+  Method = "󰆧",
+  Function = "󰆧",
+  Constructor = "󰆧",
   Field = "",
   Variable = "",
-  Class = "",
+  Class = "󰌗",
   Interface = "",
-  Module = "",
+  Module = "󰅩",
   Property = "",
   Unit = "",
-  Value = "",
+  Value = "󰎠",
   Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
+  Keyword = "󰉨",
+  Snippet = "󰃐",
+  Color = "󰏘",
+  File = "󰈙",
   Reference = "",
-  Folder = "",
+  Folder = "󰉋",
   EnumMember = "",
-  Constant = "",
+  Constant = "󰇽",
   Struct = "",
   Event = "",
-  Operator = "",
-  TypeParameter = "",
+  Operator = "󰆕",
+  TypeParameter = "󰊄",
 }
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -49,12 +49,6 @@ vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
-
   mapping = cmp.mapping.preset.insert({
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -115,6 +109,7 @@ cmp.setup({
   }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
+    expandable_indicator = true,
     format = function(entry, vim_item)
       -- Kind icons
       vim_item.kind = kind_icons[vim_item.kind]
@@ -186,6 +181,6 @@ cmp.setup({
     },
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
   },
 })

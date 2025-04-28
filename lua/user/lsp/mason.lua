@@ -10,26 +10,28 @@ end
 
 local servers = {
   "tailwindcss",
+  "gopls",
+  "zls",
   "cssls",
   "cssmodules_ls",
   "emmet_ls",
+  "eslint",
   "html",
   "jdtls",
   "jsonls",
   "solc",
   "lua_ls",
+  "svelte",
   "tflint",
   "terraformls",
-  "tsserver",
+  "ts_ls",
   "pyright",
   "yamlls",
   "bashls",
   "clangd",
   "rust_analyzer",
-  "taplo",
   "zk@v0.10.1",
   "lemminx",
-  "gopls",
 }
 
 local settings = {
@@ -45,16 +47,16 @@ local settings = {
   max_concurrent_installers = 4,
 }
 
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+  return
+end
+
 mason.setup(settings)
 mason_lspconfig.setup {
   ensure_installed = servers,
   automatic_installation = true,
 }
-
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-  return
-end
 
 local opts = {}
 
@@ -74,6 +76,26 @@ for _, server in pairs(servers) do
   if server == "tsserver" then
     local tsserver_opts = require "user.lsp.settings.tsserver"
     opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+  end
+
+  if server == "gopls" then
+    local gopls = require "user.lsp.settings.gopls"
+    opts = vim.tbl_deep_extend("force", gopls, opts)
+  end
+
+  if server == "svelte" then
+    local svelte = require "user.lsp.settings.svelte"
+    opts = vim.tbl_deep_extend("force", svelte, opts)
+  end
+
+  if server == "eslint" then
+    local eslint = require "user.lsp.settings.eslint"
+    opts = vim.tbl_deep_extend("force", eslint, opts)
+  end
+
+  if server == "zls" then
+    local zls = require "user.lsp.settings.zig"
+    opts = vim.tbl_deep_extend("force", zls, opts)
   end
 
   if server == "pyright" then
